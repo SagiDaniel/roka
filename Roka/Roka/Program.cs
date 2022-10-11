@@ -66,7 +66,7 @@ namespace Roka
                         if (nyulszamolas < nyulszam)
                         {
                             nyulszamolas++;
-                            nyul[x, y] = 1;
+                            nyul[x, y] = 3;
                         }
                         else
                         {
@@ -81,12 +81,12 @@ namespace Roka
                     {
                         for (int y = 0; y < mezoy; y++)
                         {
-                            if (rnd.Next(1, 5) > 3 && nyul[x, y] != 1)
+                            if (rnd.Next(1, 5) > 3 && nyul[x, y] != 3)
                             {
                                 if (nyulszamolas < nyulszam)
                                 {
                                     nyulszamolas++;
-                                    nyul[x, y] = 1;
+                                    nyul[x, y] = 3;
                                 }
                                 else
                                 {
@@ -101,7 +101,7 @@ namespace Roka
             {
                 for (int y = 0; y < mezoy; y++)
                 {
-                    if (nyul[x, y] == 1)
+                    if (nyul[x, y] >= 1)
                     {
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.Write("\t " + nyul[x, y]);
@@ -127,10 +127,10 @@ namespace Roka
                 {
                     if (rnd.Next(1, 5) > 3)
                     {
-                        if (rokaszamolas < rokaszam && nyul[x,y]!=1)
+                        if (rokaszamolas < rokaszam && nyul[x,y]!=5)
                         {
                             rokaszamolas++;
-                            roka[x, y] = 1;
+                            roka[x, y] = 10;
                         }
                         else
                         {
@@ -145,12 +145,12 @@ namespace Roka
                 {
                     for (int y = 0; y < mezoy; y++)
                     {
-                        if (rnd.Next(1, 5) > 3 && roka[x, y] != 1 && nyul[x, y] != 1)
+                        if (rnd.Next(1, 5) > 3 && roka[x, y] != 10 && nyul[x, y] != 5)
                         {
                             if (rokaszamolas < rokaszam)
                             {
                                 rokaszamolas++;
-                                roka[x, y] = 1;
+                                roka[x, y] = 10;
                             }
                             else
                             {
@@ -165,7 +165,7 @@ namespace Roka
             {
                 for (int y = 0; y < mezoy; y++)
                 {
-                    if (roka[x, y] == 1)
+                    if (roka[x, y] >= 1)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("\t " + roka[x, y]);
@@ -199,7 +199,7 @@ namespace Roka
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                         Console.Write(fu[x, y] + ",");
                     }
-                    if (nyul[x, y] == 1)
+                    if (nyul[x, y] >= 1)
                     {
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.Write(nyul[x, y] + ",");
@@ -209,7 +209,7 @@ namespace Roka
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.Write(nyul[x, y] + ",");
                     }
-                    if (roka[x, y] == 1)
+                    if (roka[x, y] >= 1)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write(roka[x, y]+ "\t ");
@@ -221,6 +221,118 @@ namespace Roka
                     }
                 }
                 Console.WriteLine("\n");
+            }
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("Inuljon a menet?(Igen/Nem)");
+            string beker = Console.ReadLine();
+            //cselekvesek
+            if (beker=="Igen")
+            {
+
+                do
+                {
+                    for (int x = 0; x < mezox; x++)
+                    {
+                        for (int y = 0; y < mezoy; y++)
+                        {
+                            //hplevonas
+                            if (nyul[x, y] != 0)
+                            {
+                                nyul[x, y] = nyul[x, y] - 1;
+                            }
+                            if (roka[x, y] != 0)
+                            {
+                                roka[x, y] = roka[x, y] - 1;
+                            }
+                            if (fu[x, y] < 1 && nyul[x, y] != 0)
+                            {
+                                fu[x, y] = fu[x, y] - 1;
+                                if (fu[x, y] == 3)
+                                {
+                                    if (nyul[x, y] == 1)
+                                    {
+                                        nyul[x, y] = nyul[x, y] + 2;
+                                    }
+                                    else if (nyul[x, y] == 2)
+                                    {
+                                        nyul[x, y] = nyul[x, y] + 1;
+                                    }
+                                }
+                                else if (fu[x, y] == 2)
+                                {
+                                    if (nyul[x, y] != 3)
+                                    {
+                                        nyul[x, y] = nyul[x, y] + 1;
+                                    }
+                                }
+                            }
+                            //roka kill
+                            if (roka[x, y] != 0 && nyul[x, y] != 0)
+                            {
+                                nyul[x, y] = 0;
+                                if (roka[x, y] != 10)
+                                {
+                                    roka[x, y] = roka[x, y] + 1;
+                                }
+                            }
+
+                            //fu noves
+                            if (fu[x, y] != 3 && nyul[x, y] == 0)
+                            {
+                                fu[x, y]++;
+
+                            }
+                            //mozgasok ez moge
+                        }
+                    }
+
+
+                    for (int x = 0; x < mezox; x++)
+                    {
+                        for (int y = 0; y < mezoy; y++)
+                        {
+                            if (fu[x, y] == 1)
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.Write(fu[x, y] + ",");
+                            }
+                            else if (fu[x, y] == 2)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+                                Console.Write(fu[x, y] + ",");
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.Write(fu[x, y] + ",");
+                            }
+                            if (nyul[x, y] >= 1)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Cyan;
+                                Console.Write(nyul[x, y] + ",");
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.Write(nyul[x, y] + ",");
+                            }
+                            if (roka[x, y] >= 1)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write(roka[x, y] + "\t ");
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.Write(roka[x, y] + "\t ");
+                            }
+                        }
+                        Console.WriteLine("\n");
+                    }
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.Write("Jöjjön a következő kör?(Igen/Nem)");
+                    beker = Console.ReadLine();
+                } while (beker == "Igen");
             }
             Console.ReadKey();
         }
