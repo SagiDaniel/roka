@@ -1,0 +1,7 @@
+D:\Iskola\git\roka\roka\Roka\Roka\bin\Debug\Roka.exe.config
+D:\Iskola\git\roka\roka\Roka\Roka\bin\Debug\Roka.exe
+D:\Iskola\git\roka\roka\Roka\Roka\bin\Debug\Roka.pdb
+D:\Iskola\git\roka\roka\Roka\Roka\obj\Debug\Roka.csproj.AssemblyReference.cache
+D:\Iskola\git\roka\roka\Roka\Roka\obj\Debug\Roka.csproj.CoreCompileInputs.cache
+D:\Iskola\git\roka\roka\Roka\Roka\obj\Debug\Roka.exe
+D:\Iskola\git\roka\roka\Roka\Roka\obj\Debug\Roka.pdb
