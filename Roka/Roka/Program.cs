@@ -226,7 +226,7 @@ namespace Roka
             Console.Write("Inuljon a menet?(Igen/Nem)");
             string beker = Console.ReadLine();
             //cselekvesek
-            if (beker=="Igen")
+            if (beker == "Igen" || beker == "I" || beker == "igen" || beker == "i")
             {
 
                 do
@@ -244,27 +244,31 @@ namespace Roka
                             {
                                 roka[x, y] = roka[x, y] - 1;
                             }
-                            if (fu[x, y] < 1 && nyul[x, y] != 0)
+                            //fuetkezes
+                            if (fu[x, y] != 1 && nyul[x, y] != 0)
                             {
                                 fu[x, y] = fu[x, y] - 1;
                                 if (fu[x, y] == 3)
                                 {
                                     if (nyul[x, y] == 1)
                                     {
-                                        nyul[x, y] = nyul[x, y] + 2;
+                                        nyul[x, y] = nyul[x, y] + 3;
                                     }
                                     else if (nyul[x, y] == 2)
                                     {
-                                        nyul[x, y] = nyul[x, y] + 1;
+                                        nyul[x, y] = nyul[x, y] + 2;
                                     }
                                 }
                                 else if (fu[x, y] == 2)
                                 {
-                                    if (nyul[x, y] != 3)
-                                    {
-                                        nyul[x, y] = nyul[x, y] + 1;
-                                    }
+                                        nyul[x, y] = nyul[x, y] + 2;
                                 }
+                            }
+                            //fu noves
+                            if (fu[x, y] != 3 && nyul[x, y] == 0)
+                            {
+                                fu[x, y]++;
+
                             }
                             //roka kill
                             if (roka[x, y] != 0 && nyul[x, y] != 0)
@@ -275,14 +279,8 @@ namespace Roka
                                     roka[x, y] = roka[x, y] + 1;
                                 }
                             }
-
-                            //fu noves
-                            if (fu[x, y] != 3 && nyul[x, y] == 0)
-                            {
-                                fu[x, y]++;
-
-                            }
                             //mozgasok ez moge
+
                         }
                     }
 
@@ -332,7 +330,7 @@ namespace Roka
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write("Jöjjön a következő kör?(Igen/Nem)");
                     beker = Console.ReadLine();
-                } while (beker == "Igen");
+                } while (beker == "Igen"||beker=="I" || beker == "igen" || beker == "i");
             }
             Console.ReadKey();
         }
