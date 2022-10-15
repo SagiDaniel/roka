@@ -8,7 +8,6 @@ namespace Roka
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
@@ -231,7 +230,6 @@ namespace Roka
             //cselekvesek
             if (beker == "Igen" || beker == "I" || beker == "igen" || beker == "i")
             {
-
                 do
                 {
                     for (int x = 0; x < mezox; x++)
@@ -759,10 +757,119 @@ namespace Roka
                             }
                             //szaporodas
                             //nyulszaporodas
-
+                            if (nyul[x,y]!=0)
+                            {
+                                if (nyul[x-1,y]!=0)
+                                {
+                                    if (fu[x, y - 1] > 0 && roka[x, y - 1] == 0)
+                                    {
+                                        nyul[x, y - 1] = 3;
+                                    }
+                                    else if (fu[x, y + 1] > 0 && roka[x, y + 1] == 0)
+                                    {
+                                        nyul[x, y + 1] = 3;
+                                    }
+                                    else if (fu[x + 1, y] > 0 && roka[x + 1, y] == 0)
+                                    {
+                                        nyul[x + 1, y] = 3;
+                                    }
+                                    else if (fu[x - 2, y] > 0 && roka[x - 2, y] == 0)
+                                    {
+                                        nyul[x - 2, y] = 3;
+                                    }
+                                    else if (fu[x - 1, y - 1] > 0 && roka[x - 1, y - 1] == 0) 
+                                    {
+                                        nyul[x - 1, y - 1] = 3;
+                                    }
+                                    else if (fu[x - 1, y + 1] > 0 && roka[x - 1, y + 1] == 0)
+                                    {
+                                        nyul[x - 1, y + 1] = 3;
+                                    }
+                                }
+                                else if (nyul[x,y+1]!=0)
+                                {
+                                    if (fu[x-1,y]>0 && roka[x-1,y]==0)
+                                    {
+                                        nyul[x - 1, y] = 3;
+                                    }
+                                    else if(fu[x-1, y+1] > 0 && roka[x-1, y+1] == 0)
+                                    {
+                                        nyul[x - 1, y+1] = 3;
+                                    }
+                                    else if (fu[x, y+2] > 0 && roka[x, y+2] == 0)
+                                    {
+                                        nyul[x , y+2] = 3;
+                                    }
+                                    else if (fu[x+1, y+1] > 0 && roka[x+1, y+1] == 0)
+                                    {
+                                        nyul[x +1 , y+1] = 3;
+                                    }
+                                    else if (fu[x+1, y] > 0 && roka[x+1, y] == 0)
+                                    {
+                                        nyul[x + 1, y] = 3;
+                                    }
+                                    else if (fu[x, y-1] > 0 && roka[x, y-1] == 0)
+                                    {
+                                        nyul[x, y-1] = 3;
+                                    }
+                                }
+                            }
+                            //rokaszaporodas
+                            if (roka[x,y]!=0)
+                            {
+                                if (roka[x-1,y]!=0)
+                                {
+                                    if (roka[x-2,y]==0 && fu[x-2,y]>0)
+                                    {
+                                        roka[x - 2, y] = 10;
+                                    }
+                                    else if (roka[x - 1, y+1] == 0 && fu[x - 1, y+1] > 0)
+                                    {
+                                        roka[x - 1, y+1] = 10;
+                                    }
+                                    else if (roka[x - 1, y - 1] == 0 && fu[x - 1, y - 1] > 0)
+                                    {
+                                        roka[x - 1, y - 1] = 10;
+                                    }
+                                    else if (roka[x, y + 1] == 0 && fu[x, y + 1] > 0)
+                                    {
+                                        roka[x, y + 1] = 10;
+                                    }
+                                    else if (roka[x+1, y] == 0 && fu[x+1, y] > 0)
+                                    {
+                                        roka[x+1, y] = 10;
+                                    }
+                                }
+                                else if (roka[x,y+1]!=0)
+                                {
+                                    if (roka[x-1,y]==0 && fu[x-1,y]>0)
+                                    {
+                                        roka[x - 1, y] = 10;
+                                    }
+                                    else if (roka[x - 1, y+1] == 0 && fu[x - 1, y+1] > 0)
+                                    {
+                                        roka[x - 1, y+1] = 10;
+                                    }
+                                    else if (roka[x , y + 2] == 0 && fu[x, y + 2] > 0)
+                                    {
+                                        roka[x , y + 2] = 10;
+                                    }
+                                    else if (roka[x, y - 1] == 0 && fu[x, y - 1] > 0)
+                                    {
+                                        roka[x, y - 1] = 10;
+                                    }
+                                    else if (roka[x + 1, y + 1] == 0 && fu[x + 1, y + 1] > 0)
+                                    {
+                                        roka[x + 1, y + 1] = 10;
+                                    }
+                                    else if (roka[x + 1,y] == 0 && fu[x + 1,y] > 0)
+                                    {
+                                        roka[x + 1, y] = 10;
+                                    }
+                                }
+                            }
                         }
                     }
-
                     //kiiras
                     Console.WriteLine(mozognyul);
                     for (int x = 0; x < mezox; x++)
