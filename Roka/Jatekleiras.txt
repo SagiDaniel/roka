@@ -1,0 +1,7 @@
+Ajáték elején bekérjük hogy mekkora legyen a mező méretem, hány nyúl és róka legyen.
+A fű random generálódik. Értékei lehet 1,2,3. Ha 1es az értéke akkor nincs tábértéke(fehér), ha 2 akkor csak 1 van(zöld), ha 3 akkor 2(sötétzöld) táplálékot ad a nyulaknak.
+A nyulak kezdő tápéálék értéke 3 és körönként 1 megy le. A nyúl csak füvekel tudnak tápálkozni.
+A rókák kezdőértéke 10 és nyulakkal tápálkoznak és körönként 2 tápláléka megy le. Ha a róka megöl egy nyulat megkapja a nyúj tápértékét de maximum csak 10 lehet.
+A kör elején a róka és a nyúl tápláléka megy le a megfelelő mennyiséggel.
+Elösször a nyúl tálálkozik és a róka öl utánna.
+Ezután jönnek a mozgások utánna a szaporodás és a végén meg nő a fű. 
