@@ -239,8 +239,10 @@ namespace Roka
                     {
                         for (int y = 0; y < mezoy; y++)
                         {
+                            mezox++;
+                            mezoy++;
                             rokaol = 0;
-                            //hplevonas
+                            #region hplevonas
                             if (nyul[x, y] != 0)
                             {
                                 nyul[x, y] = nyul[x, y] - 1;
@@ -249,7 +251,8 @@ namespace Roka
                             {
                                 roka[x, y] = roka[x, y] - 2;
                             }
-                            //fuetkezes
+                            #endregion
+                            #region fuetkezes
                             if (fu[x, y] != 1 && nyul[x, y] != 0)
                             {
 
@@ -270,7 +273,8 @@ namespace Roka
                                 }
                                 fu[x, y] = fu[x, y] - 1;
                             }
-                            //roka kill
+                            #endregion
+                            #region roka kill
                             if (roka[x, y] != 0 && nyul[x, y] != 0)
                             {
                                 nyul[x, y] = 0;
@@ -281,353 +285,579 @@ namespace Roka
                                 }
                                 rokaol++;
                             }
+                            #endregion
                             //mozgasok
-                            //nyul mozgas
+                            #region nyul mozgas
                             if (fu[x, y] == 1 && nyul[x, y] != 0)
                             {
                                 //x-2
-                                if (roka[x - 2, y + 1] == 0 && fu[x - 2, y + 1] == 3 && nyul[x - 2, y + 1] == 0 && x >= 2 && y <= mezoy - 1)
+                                if (x >= 2)
                                 {
-                                    haromhely++;
-                                }
-                                else if (roka[x - 2, y + 2] == 0 && fu[x - 2, y + 2] == 3 && nyul[x - 2, y + 2] == 0 && x >= 2 && y <= mezoy - 2)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x - 2, y - 2] == 0 && fu[x - 2, y - 2] == 3 && nyul[x - 2, y - 2] == 0 && x >= 2 && y >= 2)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x - 2, y - 1] == 0 && fu[x - 2, y - 1] == 3 && nyul[x - 2, y - 1] == 0 && x >= 2 && y >= 1)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x - 2, y] == 0 && fu[x - 2, y] == 3 && nyul[x - 2, y] == 0 && x >= 2)
-                                {
-                                    haromhely++;
-                                }
-                                //x-1
-                                else if (roka[x - 1, y + 1] == 0 && fu[x - 1, y + 1] == 3 && nyul[x - 1, y + 1] == 0 && x >= 1 && y <= mezoy - 1)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x - 1, y + 2] == 0 && fu[x - 1, y + 2] == 3 && nyul[x - 1, y + 2] == 0 && x >= 1 && y <= mezoy + 2)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x - 1, y - 2] == 0 && fu[x - 1, y - 2] == 3 && nyul[x - 1, y - 2] == 0 && x >= 1 && y >= 2)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x - 1, y - 1] == 0 && fu[x - 1, y - 1] == 3 && nyul[x - 1, y - 1] == 0 && x >= 1 && y >= 1)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x - 1, y] == 0 && fu[x - 1, y] == 3 && nyul[x - 1, y] == 0 && x >= 1)
-                                {
-                                    haromhely++;
-                                }
-                                //x
-                                else if (roka[x, y - 1] == 0 && fu[x, y - 1] == 3 && nyul[x, y - 1] == 0 && y >= 1)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x, y - 2] == 0 && fu[x, y - 2] == 3 && nyul[x, y - 2] == 0 && y >= 2)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x, y + 1] == 0 && fu[x, y + 1] == 3 && nyul[x, y + 1] == 0 && y <= mezoy - 1)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x, y + 2] == 0 && fu[x, y + 2] == 3 && nyul[x, y + 2] == 0 && y <= mezoy - 2)
-                                {
-                                    haromhely++;
-                                }
-                                //x+1
-                                else if (roka[x + 1, y + 1] == 0 && fu[x + 1, y + 1] == 3 && nyul[x + 1, y + 1] == 0 && x <= mezox - 1 && y <= mezoy - 1)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x + 1, y + 2] == 0 && fu[x + 1, y + 2] == 3 && nyul[x + 1, y + 2] == 0 && x <= mezox - 1 && y <= mezoy - 2)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x + 1, y - 2] == 0 && fu[x + 1, y - 2] == 3 && nyul[x + 1, y - 2] == 0 && x <= mezox - 1 && y >= 2)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x + 1, y - 1] == 0 && fu[x + 1, y - 1] == 3 && nyul[x + 1, y - 1] == 0 && x <= mezox - 1 && y >= 1)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x + 1, y] == 0 && fu[x + 1, y] == 3 && nyul[x + 1, y] == 0 && x <= mezox - 1)
-                                {
-                                    haromhely++;
-                                }
-                                //x+2
-                                else if (roka[x + 2, y + 1] == 0 && fu[x + 2, y + 1] == 3 && nyul[x + 2, y + 1] == 0 && x <= mezox - 2 && y <= mezoy - 1)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x + 2, y + 2] == 0 && fu[x + 2, y + 2] == 3 && nyul[x + 2, y + 2] == 0 && x <= mezox - 2 && y <= mezoy - 2)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x + 2, y - 2] == 0 && fu[x + 2, y - 2] == 3 && nyul[x + 2, y - 2] == 0 && x <= mezox - 2 && y >= 2)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x + 2, y - 1] == 0 && fu[x + 2, y - 1] == 3 && nyul[x + 2, y - 1] == 0 && x <= mezox - 2 && y >= 1)
-                                {
-                                    haromhely++;
-                                }
-                                else if (roka[x + 2, y] == 0 && fu[x + 2, y] == 3 && nyul[x + 2, y] == 0 && x <= mezox - 2)
-                                {
-                                    haromhely++;
-                                }
-                                //2hely
-                                //x-2
-                                if (roka[x - 2, y + 1] == 0 && fu[x - 2, y + 1] == 2 && nyul[x - 2, y + 1] == 0 && x >= 2 && y <= mezoy - 1)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x - 2, y + 2] == 0 && fu[x - 2, y + 2] == 2 && nyul[x - 2, y + 2] == 0 && x >= 2 && y <= mezoy - 2)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x - 2, y - 2] == 0 && fu[x - 2, y - 2] == 2 && nyul[x - 2, y - 2] == 0 && x >= 2 && y >= 2)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x - 2, y - 1] == 0 && fu[x - 2, y - 1] == 2 && nyul[x - 2, y - 1] == 0 && x >= 2 && y >= 1)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x - 2, y] == 0 && fu[x - 2, y] == 2 && nyul[x - 2, y] == 0 && x <= 2)
-                                {
-                                    ketohely++;
+                                    if (roka[x - 2, y] == 0 && fu[x - 2, y] == 3 && nyul[x - 2, y] == 0)
+                                    {
+                                        haromhely++;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x - 2, y - 1] == 0 && fu[x - 2, y - 1] == 3 && nyul[x - 2, y - 1] == 0 && x >= 2 && y >= 1)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x - 2, y - 2] == 0 && fu[x - 2, y - 2] == 3 && nyul[x - 2, y - 2] == 0)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x - 2, y + 1] == 0 && fu[x - 2, y + 1] == 3 && nyul[x - 2, y + 1] == 0)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x - 2, y + 2] == 0 && fu[x - 2, y + 2] == 3 && nyul[x - 2, y + 2] == 0)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
                                 }
                                 //x-1
-                                else if (roka[x - 1, y + 1] == 0 && fu[x - 1, y + 1] == 2 && nyul[x - 1, y + 1] == 0 && x >= 1 && y <= mezoy - 1)
+                                if (x >= 1)
                                 {
-                                    ketohely++;
-                                }
-                                else if (roka[x - 1, y + 2] == 0 && fu[x - 1, y + 2] == 2 && nyul[x - 1, y + 2] == 0 && x >= 1 && y <= mezoy - 2)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x - 1, y - 2] == 0 && fu[x - 1, y - 2] == 2 && nyul[x - 1, y - 2] == 0 && x >= 1 && y >= 2)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x - 1, y - 1] == 0 && fu[x - 1, y - 1] == 2 && nyul[x - 1, y - 1] == 0 && x >= 1 && y >= 1)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x - 1, y] == 0 && fu[x - 1, y] == 2 && nyul[x - 1, y] == 0 && x >= 1)
-                                {
-                                    ketohely++;
-                                }
-                                //x
-                                else if (roka[x, y - 1] == 0 && fu[x, y - 1] == 2 && nyul[x, y - 1] == 0 && y >= 1)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x, y - 2] == 0 && fu[x, y - 2] == 2 && nyul[x, y - 2] == 0 && y >= 2)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x, y + 1] == 0 && fu[x, y + 1] == 2 && nyul[x, y + 1] == 0 && y <= mezoy - 1)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x, y + 2] == 0 && fu[x, y + 2] == 2 && nyul[x, y + 2] == 0 && y <= mezoy - 2)
-                                {
-                                    ketohely++;
-                                }
-                                //x+1
-                                else if (roka[x + 1, y + 1] == 0 && fu[x + 1, y + 1] == 2 && nyul[x + 1, y + 1] == 0 && x <= mezox - 1 && y <= mezoy - 1)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x + 1, y + 2] == 0 && fu[x + 1, y + 2] == 2 && nyul[x + 1, y + 2] == 0 && x <= mezox - 1 && y <= mezoy - 2)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x + 1, y - 2] == 0 && fu[x + 1, y - 2] == 2 && nyul[x + 1, y - 2] == 0 && x <= mezox - 1 && y >= 2)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x + 1, y - 1] == 0 && fu[x + 1, y - 1] == 2 && nyul[x + 1, y - 1] == 0 && x <= mezox - 1 && y >= 1)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x + 1, y] == 0 && fu[x + 1, y] == 2 && nyul[x + 1, y] == 0 && x <= mezox - 1)
-                                {
-                                    ketohely++;
-                                }
-                                //x+2
-                                else if (roka[x + 2, y + 1] == 0 && fu[x + 2, y + 1] == 2 && nyul[x + 2, y + 1] == 0 && x <= mezox - 2 && y <= mezoy - 1)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x + 2, y + 2] == 0 && fu[x + 2, y + 2] == 2 && nyul[x + 2, y + 2] == 0 && x <= mezox - 2 && y <= mezoy - 2)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x + 2, y - 2] == 0 && fu[x + 2, y - 2] == 2 && nyul[x + 2, y - 2] == 0 && x <= mezox - 2 && y >= 2)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x + 2, y - 1] == 0 && fu[x + 2, y - 1] == 2 && nyul[x + 2, y - 1] == 0 && x <= mezox - 2 && y >= 1)
-                                {
-                                    ketohely++;
-                                }
-                                else if (roka[x + 2, y] == 0 && fu[x + 2, y] == 2 && nyul[x + 2, y] == 0 && x <= mezox - 2)
-                                {
-                                    ketohely++;
-                                }
-                                ketohely++;
-                                haromhely++;
-                                if (haromhely != 0)
-                                {
-                                    mozognyul = rnd.Next(1, haromhely);
-                                }
-                                else if (ketohely != 0)
-                                {
-                                    mozognyul = rnd.Next(1, ketohely);
-                                }
-                                //x-2
-                                if (roka[x - 2, y + 1] == 0 && fu[x - 2, y + 1] == 3 && nyul[x - 2, y + 1] == 0 && mozognyul < 1 || mozognyul == 1 && x >= 2 && y <= mezoy - 1)
-                                {
+                                    if (roka[x - 1, y] == 0 && fu[x - 1, y] == 3 && nyul[x - 1, y] == 0 && x >= 1)
+                                    {
+                                        haromhely++;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x - 1, y - 1] == 0 && fu[x - 1, y - 1] == 3 && nyul[x - 1, y - 1] == 0)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x - 1, y - 2] == 0 && fu[x - 1, y - 2] == 3 && nyul[x - 1, y - 2] == 0)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x - 1, y + 1] == 0 && fu[x - 1, y + 1] == 3 && nyul[x - 1, y + 1] == 0)
+                                        {
+                                            haromhely++;
+                                        }
 
-                                    nyul[x - 2, y + 1] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x - 2, y + 2] == 0 && fu[x - 2, y + 2] == 3 && nyul[x - 2, y + 2] == 0 && mozognyul < 2 || mozognyul == 2 && x >= 2 && y <= mezoy - 2)
-                                {
-                                    nyul[x - 2, y + 2] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x - 2, y - 2] == 0 && fu[x - 2, y - 2] == 3 && nyul[x - 2, y - 2] == 0 && mozognyul < 3 || mozognyul == 3 && x >= 2 && y >= 2)
-                                {
-                                    nyul[x - 2, y - 2] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x - 2, y - 1] == 0 && fu[x - 2, y - 1] == 3 && nyul[x - 2, y - 1] == 0 && mozognyul < 4 || mozognyul == 4 && x >= 2 && y >= 1)
-                                {
-                                    nyul[x - 2, y - 1] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x - 2, y] == 0 && fu[x - 2, y] == 3 && nyul[x - 2, y] == 0 && mozognyul < 5 || mozognyul == 5 && x >= 2)
-                                {
-                                    nyul[x - 2, y] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                //x-1
-                                else if (roka[x - 1, y + 1] == 0 && fu[x - 1, y + 1] == 3 && nyul[x - 1, y + 1] == 0 && mozognyul < 6 || mozognyul == 6 && x >= 1 && y <= mezoy - 1)
-                                {
-                                    nyul[x - 1, y + 1] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x - 1, y + 2] == 0 && fu[x - 1, y + 2] == 3 && nyul[x - 1, y + 2] == 0 && mozognyul < 7 || mozognyul == 7 && x >= 1 && y <= mezoy - 2)
-                                {
-                                    nyul[x - 1, y + 2] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x - 1, y - 2] == 0 && fu[x - 1, y - 2] == 3 && nyul[x - 1, y - 2] == 0 && mozognyul < 8 || mozognyul == 8 && x >= 1 && y >= 2)
-                                {
-                                    nyul[x - 1, y - 2] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x - 1, y - 1] == 0 && fu[x - 1, y - 1] == 3 && nyul[x - 1, y - 1] == 0 && mozognyul < 9 || mozognyul == 9 && x >= 1 && y >= 1)
-                                {
-                                    nyul[x - 1, y - 1] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x - 1, y] == 0 && fu[x - 1, y] == 3 && nyul[x - 1, y] == 0 && mozognyul < 10 || mozognyul == 10 && x >= 1)
-                                {
-                                    nyul[x - 1, y] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x - 1, y + 2] == 0 && fu[x - 1, y + 2] == 3 && nyul[x - 1, y + 2] == 0)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+
                                 }
                                 //x
-                                else if (roka[x, y - 1] == 0 && fu[x, y - 1] == 3 && nyul[x, y - 1] == 0 && mozognyul < 11 || mozognyul == 11 && y >= 1)
+                                if (y >= 1)
                                 {
-                                    nyul[x, y - 1] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    if (roka[x, y - 1] == 0 && fu[x, y - 1] == 3 && nyul[x, y - 1] == 0)
+                                    {
+                                        haromhely++;
+                                    }
                                 }
-                                else if (roka[x, y - 2] == 0 && fu[x, y - 2] == 3 && nyul[x, y - 2] == 0 && mozognyul < 12 || mozognyul == 12 && y >= 2)
+                                if (y >= 2)
                                 {
-                                    nyul[x, y - 2] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    if (roka[x, y - 2] == 0 && fu[x, y - 2] == 3 && nyul[x, y - 2] == 0)
+                                    {
+                                        haromhely++;
+                                    }
                                 }
-                                else if (roka[x, y + 1] == 0 && fu[x, y + 1] == 3 && nyul[x, y + 1] == 0 && mozognyul < 13 || mozognyul == 13 && y <= mezoy - 1)
+                                if (y <= mezoy - 1)
                                 {
-                                    nyul[x, y + 1] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    if (roka[x, y + 1] == 0 && fu[x, y + 1] == 3 && nyul[x, y + 1] == 0)
+                                    {
+                                        haromhely++;
+                                    }
                                 }
-                                else if (roka[x, y + 2] == 0 && fu[x, y + 2] == 3 && nyul[x, y + 2] == 0 && mozognyul < 14 || mozognyul == 14 && y <= mezoy - 2)
+                                if (y <= mezoy - 2)
                                 {
-                                    nyul[x, y + 2] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    if (roka[x, y + 2] == 0 && fu[x, y + 2] == 3 && nyul[x, y + 2] == 0)
+                                    {
+                                        haromhely++;
+                                    }
                                 }
                                 //x+1
-                                else if (roka[x + 1, y + 1] == 0 && fu[x + 1, y + 1] == 3 && nyul[x + 1, y + 1] == 0 && mozognyul < 15 || mozognyul == 15 && x <= mezox - 1 && y <= mezoy - 1)
+                                if (x <= mezox - 1)
                                 {
-                                    nyul[x + 1, y + 1] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x + 1, y + 2] == 0 && fu[x + 1, y + 2] == 3 && nyul[x + 1, y + 2] == 0 && mozognyul < 16 || mozognyul == 16 && x <= mezox - 1 && y <= mezoy - 2)
-                                {
-                                    nyul[x + 1, y + 2] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x + 1, y - 2] == 0 && fu[x + 1, y - 2] == 3 && nyul[x + 1, y - 2] == 0 && mozognyul < 17 || mozognyul == 17 && x <= mezox - 1 && y >= 2)
-                                {
-                                    nyul[x + 1, y - 2] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x + 1, y - 1] == 0 && fu[x + 1, y - 1] == 3 && nyul[x + 1, y - 1] == 0 && mozognyul < 18 || mozognyul == 18 && x <= mezox - 1 && y >= 1)
-                                {
-                                    nyul[x + 1, y - 1] = nyul[x, y];
-                                    nyul[x, y] = 0;
-                                }
-                                else if (roka[x + 1, y] == 0 && fu[x + 1, y] == 3 && nyul[x + 1, y] == 0 && mozognyul < 19 || mozognyul == 19 && x <= mezox - 1)
-                                {
-                                    nyul[x + 1, y] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    if (roka[x + 1, y] == 0 && fu[x + 1, y] == 3 && nyul[x + 1, y] == 0)
+                                    {
+                                        haromhely++;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x + 1, y - 1] == 0 && fu[x + 1, y - 1] == 3 && nyul[x + 1, y - 1] == 0)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x + 1, y - 2] == 0 && fu[x + 1, y - 2] == 3 && nyul[x + 1, y - 2] == 0)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x + 1, y + 1] == 0 && fu[x + 1, y + 1] == 3 && nyul[x + 1, y + 1] == 0)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x + 1, y + 2] == 0 && fu[x + 1, y + 2] == 3 && nyul[x + 1, y + 2] == 0)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
                                 }
                                 //x+2
-                                else if (roka[x + 2, y + 1] == 0 && fu[x + 2, y + 1] == 3 && nyul[x + 2, y + 1] == 0 && mozognyul < 20 || mozognyul == 20 && x <= mezox - 2 && y <= mezoy - 1)
+                                if (x <= mezox - 2)
                                 {
-                                    nyul[x + 2, y + 1] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    if (roka[x + 2, y] == 0 && fu[x + 2, y] == 3 && nyul[x + 2, y] == 0 && x <= mezox - 2)
+                                    {
+                                        haromhely++;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x + 2, y - 1] == 0 && fu[x + 2, y - 1] == 3 && nyul[x + 2, y - 1] == 0 && x <= mezox - 2 && y >= 1)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x + 2, y - 2] == 0 && fu[x + 2, y - 2] == 3 && nyul[x + 2, y - 2] == 0 && x <= mezox - 2 && y >= 2)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x + 2, y + 1] == 0 && fu[x + 2, y + 1] == 3 && nyul[x + 2, y + 1] == 0 && x <= mezox - 2 && y <= mezoy - 1)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x + 2, y + 2] == 0 && fu[x + 2, y + 2] == 3 && nyul[x + 2, y + 2] == 0 && x <= mezox - 2 && y <= mezoy - 2)
+                                        {
+                                            haromhely++;
+                                        }
+                                    }
                                 }
-                                else if (roka[x + 2, y + 2] == 0 && fu[x + 2, y + 2] == 3 && nyul[x + 2, y + 2] == 0 && mozognyul < 21 || mozognyul == 21 && x <= mezox - 2 && y <= mezoy - 2)
+                                //masodikhely
+                                //x-2
+                                if (x >= 2)
                                 {
-                                    nyul[x + 2, y + 2] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    if (roka[x - 2, y] == 0 && fu[x - 2, y] == 2 && nyul[x - 2, y] == 0)
+                                    {
+                                        ketohely++;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x - 2, y - 1] == 0 && fu[x - 2, y - 1] == 2 && nyul[x - 2, y - 1] == 0 && x >= 2 && y >= 1)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x - 2, y - 2] == 0 && fu[x - 2, y - 2] == 2 && nyul[x - 2, y - 2] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x - 2, y + 1] == 0 && fu[x - 2, y + 1] == 2 && nyul[x - 2, y + 1] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x - 2, y + 2] == 0 && fu[x - 2, y + 2] == 2 && nyul[x - 2, y + 2] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
                                 }
-                                else if (roka[x + 2, y - 2] == 0 && fu[x + 2, y - 2] == 3 && nyul[x + 2, y - 2] == 0 && mozognyul < 22 || mozognyul == 22 && x <= mezox - 2 && y >= 2)
+                                //x-1
+                                if (x >= 1)
                                 {
-                                    nyul[x + 2, y - 2] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    if (roka[x - 1, y] == 0 && fu[x - 1, y] == 2 && nyul[x - 1, y] == 0 && x >= 1)
+                                    {
+                                        ketohely++;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x - 1, y - 1] == 0 && fu[x - 1, y - 1] == 2 && nyul[x - 1, y - 1] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x - 1, y - 2] == 0 && fu[x - 1, y - 2] == 2 && nyul[x - 1, y - 2] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x - 1, y + 1] == 0 && fu[x - 1, y + 1] == 2 && nyul[x - 1, y + 1] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x - 1, y + 2] == 0 && fu[x - 1, y + 2] == 2 && nyul[x - 1, y + 2] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+
                                 }
-                                else if (roka[x + 2, y - 1] == 0 && fu[x + 2, y - 1] == 3 && nyul[x + 2, y - 1] == 0 && mozognyul < 23 || mozognyul == 23 && x <= mezox - 2 && y >= 1)
+                                //x
+                                if (y >= 1)
                                 {
-                                    nyul[x + 2, y - 1] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    if (roka[x, y - 1] == 0 && fu[x, y - 1] == 2 && nyul[x, y - 1] == 0)
+                                    {
+                                        ketohely++;
+                                    }
                                 }
-                                else if (roka[x + 2, y] == 0 && fu[x + 2, y] == 3 && nyul[x + 2, y] == 0 && mozognyul < 1 || mozognyul == 1 && x <= mezox - 2)
+                                if (y >= 2)
                                 {
-                                    nyul[x + 2, y] = nyul[x, y];
-                                    nyul[x, y] = 0;
+                                    if (roka[x, y - 2] == 0 && fu[x, y - 2] == 2 && nyul[x, y - 2] == 0)
+                                    {
+                                        ketohely++;
+                                    }
+                                }
+                                if (y <= mezoy - 1)
+                                {
+                                    if (roka[x, y + 1] == 0 && fu[x, y + 1] == 2 && nyul[x, y + 1] == 0)
+                                    {
+                                        ketohely++;
+                                    }
+                                }
+                                if (y <= mezoy - 2)
+                                {
+                                    if (roka[x, y + 2] == 0 && fu[x, y + 2] == 2 && nyul[x, y + 2] == 0)
+                                    {
+                                        ketohely++;
+                                    }
+                                }
+                                //x+1
+                                if (x <= mezox - 1)
+                                {
+                                    if (roka[x + 1, y] == 0 && fu[x + 1, y] == 2 && nyul[x + 1, y] == 0)
+                                    {
+                                        ketohely++;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x + 1, y - 1] == 0 && fu[x + 1, y - 1] == 2 && nyul[x + 1, y - 1] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x + 1, y - 2] == 0 && fu[x + 1, y - 2] == 2 && nyul[x + 1, y - 2] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x + 1, y + 1] == 0 && fu[x + 1, y + 1] == 2 && nyul[x + 1, y + 1] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x + 1, y + 2] == 0 && fu[x + 1, y + 2] == 2 && nyul[x + 1, y + 2] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                }
+                                //x+2
+                                if (x <= mezox - 2)
+                                {
+                                    if (roka[x + 2, y] == 0 && fu[x + 2, y] == 2 && nyul[x + 2, y] == 0)
+                                    {
+                                        ketohely++;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x + 2, y - 1] == 0 && fu[x + 2, y - 1] == 2 && nyul[x + 2, y - 1] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x + 2, y - 2] == 0 && fu[x + 2, y - 2] == 2 && nyul[x + 2, y - 2] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x + 2, y + 1] == 0 && fu[x + 2, y + 1] == 2 && nyul[x + 2, y + 1] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x + 2, y + 2] == 0 && fu[x + 2, y + 2] == 2 && nyul[x + 2, y + 2] == 0)
+                                        {
+                                            ketohely++;
+                                        }
+                                    }
+                                }
+                            }
+                            ketohely++;
+                            haromhely++;
+                            if (haromhely != 0)
+                            {
+                                mozognyul = rnd.Next(1, haromhely);
+                            }
+                            else if (ketohely != 0)
+                            {
+                                mozognyul = rnd.Next(1, ketohely);
+                            }
+                            if (fu[x, y] == 1 && nyul[x, y] != 0)
+                            {
+                                //x-2
+                                if (x >= 2)
+                                {
+                                    if (roka[x - 2, y] == 0 && fu[x - 2, y] == 3 && nyul[x - 2, y] == 0 && mozognyul < 1 || mozognyul == 1)
+                                    {
+                                        nyul[x - 2, y] = nyul[x, y];
+                                        nyul[x, y] = 0;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x - 2, y - 1] == 0 && fu[x - 2, y - 1] == 3 && nyul[x - 2, y - 1] == 0 && mozognyul < 2 || mozognyul == 2)
+                                        {
+                                            nyul[x - 2, y - 1] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x - 2, y - 2] == 0 && fu[x - 2, y - 2] == 3 && nyul[x - 2, y - 2] == 0 && mozognyul < 3 || mozognyul == 3)
+                                        {
+                                            nyul[x - 2, y - 2] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x - 2, y + 1] == 0 && fu[x - 2, y + 1] == 3 && nyul[x - 2, y + 1] == 0 && mozognyul < 4 || mozognyul == 4)
+                                        {
+                                            nyul[x - 2, y + 1] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x - 2, y + 2] == 0 && fu[x - 2, y + 2] == 3 && nyul[x - 2, y + 2] == 0 && mozognyul < 5 || mozognyul == 5)
+                                        {
+                                            nyul[x - 2, y + 2] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                }
+                                //x-1
+                                if (x >= 1)
+                                {
+                                    if (roka[x - 1, y] == 0 && fu[x - 1, y] == 3 && nyul[x - 1, y] == 0 && x >= 1 && mozognyul < 6 || mozognyul == 6)
+                                    {
+                                        nyul[x - 1, y] = nyul[x, y];
+                                        nyul[x, y] = 0;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x - 1, y - 1] == 0 && fu[x - 1, y - 1] == 3 && nyul[x - 1, y - 1] == 0 && mozognyul < 7 || mozognyul == 7)
+                                        {
+                                            nyul[x - 1, y - 1] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x - 1, y - 2] == 0 && fu[x - 1, y - 2] == 3 && nyul[x - 1, y - 2] == 0 && mozognyul < 8 || mozognyul == 8)
+                                        {
+                                            nyul[x - 1, y - 2] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x - 1, y + 1] == 0 && fu[x - 1, y + 1] == 3 && nyul[x - 1, y + 1] == 0 && mozognyul < 9 || mozognyul == 9)
+                                        {
+                                            nyul[x - 1, y + 1] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x - 1, y + 2] == 0 && fu[x - 1, y + 2] == 3 && nyul[x - 1, y + 2] == 0 && mozognyul < 10 || mozognyul == 10)
+                                        {
+                                            nyul[x - 1, y + 2] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                }
+                                //x
+                                if (y >= 1)
+                                {
+                                    if (roka[x, y - 1] == 0 && fu[x, y - 1] == 3 && nyul[x, y - 1] == 0 && mozognyul < 11 || mozognyul == 11)
+                                    {
+                                        nyul[x, y - 1] = nyul[x, y];
+                                        nyul[x, y] = 0;
+                                    }
+                                }
+                                if (y >= 2)
+                                {
+                                    if (roka[x, y - 2] == 0 && fu[x, y - 2] == 3 && nyul[x, y - 2] == 0 && mozognyul < 12 || mozognyul == 12)
+                                    {
+                                        nyul[x, y - 2] = nyul[x, y];
+                                        nyul[x, y] = 0;
+                                    }
+                                }
+                                if (y <= mezoy - 1)
+                                {
+                                    if (roka[x, y + 1] == 0 && fu[x, y + 1] == 3 && nyul[x, y + 1] == 0 && mozognyul < 13 || mozognyul == 13)
+                                    {
+                                        nyul[x, y + 1] = nyul[x, y];
+                                        nyul[x, y] = 0;
+                                    }
+                                }
+                                if (y <= mezoy - 2)
+                                {
+                                    if (roka[x, y + 2] == 0 && fu[x, y + 2] == 3 && nyul[x, y + 2] == 0 && mozognyul < 14 || mozognyul == 14)
+                                    {
+                                        nyul[x, y + 2] = nyul[x, y];
+                                        nyul[x, y] = 0;
+                                    }
+                                }
+                                //x+1
+                                if (x <= mezox - 1)
+                                {
+                                    if (roka[x + 1, y] == 0 && fu[x + 1, y] == 3 && nyul[x + 1, y] == 0 && mozognyul < 15 || mozognyul == 15)
+                                    {
+                                        nyul[x + 1, y] = nyul[x, y];
+                                        nyul[x, y] = 0;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x + 1, y - 1] == 0 && fu[x + 1, y - 1] == 3 && nyul[x + 1, y - 1] == 0 && mozognyul < 16 || mozognyul == 16)
+                                        {
+                                            nyul[x + 1, y - 1] = nyul[x, y];
+                                            nyul[x, y] = 0;
+
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x + 1, y - 2] == 0 && fu[x + 1, y - 2] == 3 && nyul[x + 1, y - 2] == 0 && mozognyul < 17 || mozognyul == 17)
+                                        {
+                                            nyul[x + 1, y - 2] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x + 1, y + 1] == 0 && fu[x + 1, y + 1] == 3 && nyul[x + 1, y + 1] == 0 && mozognyul < 18 || mozognyul == 18)
+                                        {
+                                            nyul[x + 1, y + 1] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x + 1, y + 2] == 0 && fu[x + 1, y + 2] == 3 && nyul[x + 1, y + 2] == 0 && mozognyul < 19 || mozognyul == 19)
+                                        {
+                                            nyul[x + 1, y + 2] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                }
+                                //x+2
+                                if (x <= mezox - 2)
+                                {
+                                    if (roka[x + 2, y] == 0 && fu[x + 2, y] == 3 && nyul[x + 2, y] == 0 && x <= mezox - 2 && mozognyul < 20 || mozognyul == 20)
+                                    {
+                                        nyul[x + 2, y] = nyul[x, y];
+                                        nyul[x, y] = 0;
+                                    }
+                                    if (y >= 1)
+                                    {
+                                        if (roka[x + 2, y - 1] == 0 && fu[x + 2, y - 1] == 3 && nyul[x + 2, y - 1] == 0 && x <= mezox - 2 && y >= 1 && mozognyul < 21 || mozognyul == 21)
+                                        {
+                                            nyul[x + 2, y - 1] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                    if (y >= 2)
+                                    {
+                                        if (roka[x + 2, y - 2] == 0 && fu[x + 2, y - 2] == 3 && nyul[x + 2, y - 2] == 0 && x <= mezox - 2 && y >= 2 && mozognyul < 22 || mozognyul == 22)
+                                        {
+                                            nyul[x + 2, y - 2] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                    if (y <= mezoy - 1)
+                                    {
+                                        if (roka[x + 2, y + 1] == 0 && fu[x + 2, y + 1] == 3 && nyul[x + 2, y + 1] == 0 && x <= mezox - 2 && y <= mezoy - 1 && mozognyul < 23 || mozognyul == 23)
+                                        {
+                                            nyul[x + 2, y + 1] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
+                                    if (y <= mezoy - 2)
+                                    {
+                                        if (roka[x + 2, y + 2] == 0 && fu[x + 2, y + 2] == 3 && nyul[x + 2, y + 2] == 0 && x <= mezox - 2 && y <= mezoy - 2 && mozognyul < 24 || mozognyul == 24)
+                                        {
+                                            nyul[x + 2, y + 2] = nyul[x, y];
+                                            nyul[x, y] = 0;
+                                        }
+                                    }
                                 }
                             }
                             haromhely = 0;
                             ketohely = 0;
-                            //roka mozgas
+                            #endregion
+                            #region roka mozgas
                             if (rokaol == 0)
                             {
                                 if (roka[x, y] != 0)
@@ -672,7 +902,6 @@ namespace Roka
                                                 roka[x, y] = 0;
                                             }
                                         }
-
                                     }
                                     //x-2
                                     if (x >= 2)
@@ -951,14 +1180,18 @@ namespace Roka
                                 }
 
                             }
-                            //fu noves
+                            #endregion
+                            #region fu noves
                             if (fu[x, y] != 3 && nyul[x, y] == 0)
                             {
                                 fu[x, y]++;
                             }
+                            #endregion
+                            mezoy--;
+                            mezox--;
                         }
                     }
-                    //kiiras
+                    #region kiiras
                     Console.WriteLine(mozognyul);
                     for (int x = 0; x < mezox; x++)
                     {
@@ -1006,6 +1239,7 @@ namespace Roka
                     Console.Write("Jöjjön a következő kör?(Igen/Nem)");
                     beker = Console.ReadLine();
                 } while (beker == "Igen" || beker == "I" || beker == "igen" || beker == "i");
+                #endregion
             }
             Console.ReadKey();
         }
