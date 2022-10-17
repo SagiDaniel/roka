@@ -239,8 +239,8 @@ namespace Roka
                     {
                         for (int y = 0; y < mezoy; y++)
                         {
-                            mezox++;
-                            mezoy++;
+                            mezox--;
+                            mezoy--;
                             rokaol = 0;
                             #region hplevonas
                             if (nyul[x, y] != 0)
@@ -277,12 +277,13 @@ namespace Roka
                             #region roka kill
                             if (roka[x, y] != 0 && nyul[x, y] != 0)
                             {
-                                nyul[x, y] = 0;
-                                roka[x, y] = roka[x, y] + nyul[x, y];
+                                
+                                roka[x, y] += nyul[x, y];
                                 if (roka[x, y] > 10)
                                 {
                                     roka[x, y] = 10;
                                 }
+                                nyul[x, y] = 0;
                                 rokaol++;
                             }
                             #endregion
@@ -657,14 +658,14 @@ namespace Roka
                                 //x-2
                                 if (x >= 2)
                                 {
-                                    if (roka[x - 2, y] == 0 && fu[x - 2, y] == 3 && nyul[x - 2, y] == 0 && mozognyul < 1 || mozognyul == 1)
+                                    if (roka[x - 2, y] == 0 && fu[x - 2, y] == 3 && nyul[x - 2, y] == 0 && mozognyul <= 1)
                                     {
                                         nyul[x - 2, y] = nyul[x, y];
                                         nyul[x, y] = 0;
                                     }
                                     if (y >= 1)
                                     {
-                                        if (roka[x - 2, y - 1] == 0 && fu[x - 2, y - 1] == 3 && nyul[x - 2, y - 1] == 0 && mozognyul < 2 || mozognyul == 2)
+                                        if (roka[x - 2, y - 1] == 0 && fu[x - 2, y - 1] == 3 && nyul[x - 2, y - 1] == 0 && mozognyul <= 2)
                                         {
                                             nyul[x - 2, y - 1] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -672,7 +673,7 @@ namespace Roka
                                     }
                                     if (y >= 2)
                                     {
-                                        if (roka[x - 2, y - 2] == 0 && fu[x - 2, y - 2] == 3 && nyul[x - 2, y - 2] == 0 && mozognyul < 3 || mozognyul == 3)
+                                        if (roka[x - 2, y - 2] == 0 && fu[x - 2, y - 2] == 3 && nyul[x - 2, y - 2] == 0 && mozognyul <= 3)
                                         {
                                             nyul[x - 2, y - 2] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -680,7 +681,7 @@ namespace Roka
                                     }
                                     if (y <= mezoy - 1)
                                     {
-                                        if (roka[x - 2, y + 1] == 0 && fu[x - 2, y + 1] == 3 && nyul[x - 2, y + 1] == 0 && mozognyul < 4 || mozognyul == 4)
+                                        if (roka[x - 2, y + 1] == 0 && fu[x - 2, y + 1] == 3 && nyul[x - 2, y + 1] == 0 && mozognyul <= 4)
                                         {
                                             nyul[x - 2, y + 1] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -688,7 +689,7 @@ namespace Roka
                                     }
                                     if (y <= mezoy - 2)
                                     {
-                                        if (roka[x - 2, y + 2] == 0 && fu[x - 2, y + 2] == 3 && nyul[x - 2, y + 2] == 0 && mozognyul < 5 || mozognyul == 5)
+                                        if (roka[x - 2, y + 2] == 0 && fu[x - 2, y + 2] == 3 && nyul[x - 2, y + 2] == 0 && mozognyul <= 5)
                                         {
                                             nyul[x - 2, y + 2] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -698,14 +699,14 @@ namespace Roka
                                 //x-1
                                 if (x >= 1)
                                 {
-                                    if (roka[x - 1, y] == 0 && fu[x - 1, y] == 3 && nyul[x - 1, y] == 0 && x >= 1 && mozognyul < 6 || mozognyul == 6)
+                                    if (roka[x - 1, y] == 0 && fu[x - 1, y] == 3 && nyul[x - 1, y] == 0 && x >= 1 && mozognyul <= 6)
                                     {
                                         nyul[x - 1, y] = nyul[x, y];
                                         nyul[x, y] = 0;
                                     }
                                     if (y >= 1)
                                     {
-                                        if (roka[x - 1, y - 1] == 0 && fu[x - 1, y - 1] == 3 && nyul[x - 1, y - 1] == 0 && mozognyul < 7 || mozognyul == 7)
+                                        if (roka[x - 1, y - 1] == 0 && fu[x - 1, y - 1] == 3 && nyul[x - 1, y - 1] == 0 && mozognyul <= 7)
                                         {
                                             nyul[x - 1, y - 1] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -713,7 +714,7 @@ namespace Roka
                                     }
                                     if (y >= 2)
                                     {
-                                        if (roka[x - 1, y - 2] == 0 && fu[x - 1, y - 2] == 3 && nyul[x - 1, y - 2] == 0 && mozognyul < 8 || mozognyul == 8)
+                                        if (roka[x - 1, y - 2] == 0 && fu[x - 1, y - 2] == 3 && nyul[x - 1, y - 2] == 0 && mozognyul <= 8)
                                         {
                                             nyul[x - 1, y - 2] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -721,7 +722,7 @@ namespace Roka
                                     }
                                     if (y <= mezoy - 1)
                                     {
-                                        if (roka[x - 1, y + 1] == 0 && fu[x - 1, y + 1] == 3 && nyul[x - 1, y + 1] == 0 && mozognyul < 9 || mozognyul == 9)
+                                        if (roka[x - 1, y + 1] == 0 && fu[x - 1, y + 1] == 3 && nyul[x - 1, y + 1] == 0 && mozognyul <= 9)
                                         {
                                             nyul[x - 1, y + 1] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -730,7 +731,7 @@ namespace Roka
                                     }
                                     if (y <= mezoy - 2)
                                     {
-                                        if (roka[x - 1, y + 2] == 0 && fu[x - 1, y + 2] == 3 && nyul[x - 1, y + 2] == 0 && mozognyul < 10 || mozognyul == 10)
+                                        if (roka[x - 1, y + 2] == 0 && fu[x - 1, y + 2] == 3 && nyul[x - 1, y + 2] == 0 && mozognyul <= 10)
                                         {
                                             nyul[x - 1, y + 2] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -740,7 +741,7 @@ namespace Roka
                                 //x
                                 if (y >= 1)
                                 {
-                                    if (roka[x, y - 1] == 0 && fu[x, y - 1] == 3 && nyul[x, y - 1] == 0 && mozognyul < 11 || mozognyul == 11)
+                                    if (roka[x, y - 1] == 0 && fu[x, y - 1] == 3 && nyul[x, y - 1] == 0 && mozognyul <= 11)
                                     {
                                         nyul[x, y - 1] = nyul[x, y];
                                         nyul[x, y] = 0;
@@ -748,7 +749,7 @@ namespace Roka
                                 }
                                 if (y >= 2)
                                 {
-                                    if (roka[x, y - 2] == 0 && fu[x, y - 2] == 3 && nyul[x, y - 2] == 0 && mozognyul < 12 || mozognyul == 12)
+                                    if (roka[x, y - 2] == 0 && fu[x, y - 2] == 3 && nyul[x, y - 2] == 0 && mozognyul <= 12)
                                     {
                                         nyul[x, y - 2] = nyul[x, y];
                                         nyul[x, y] = 0;
@@ -756,7 +757,7 @@ namespace Roka
                                 }
                                 if (y <= mezoy - 1)
                                 {
-                                    if (roka[x, y + 1] == 0 && fu[x, y + 1] == 3 && nyul[x, y + 1] == 0 && mozognyul < 13 || mozognyul == 13)
+                                    if (roka[x, y + 1] == 0 && fu[x, y + 1] == 3 && nyul[x, y + 1] == 0 && mozognyul <= 13)
                                     {
                                         nyul[x, y + 1] = nyul[x, y];
                                         nyul[x, y] = 0;
@@ -764,7 +765,7 @@ namespace Roka
                                 }
                                 if (y <= mezoy - 2)
                                 {
-                                    if (roka[x, y + 2] == 0 && fu[x, y + 2] == 3 && nyul[x, y + 2] == 0 && mozognyul < 14 || mozognyul == 14)
+                                    if (roka[x, y + 2] == 0 && fu[x, y + 2] == 3 && nyul[x, y + 2] == 0 && mozognyul <= 14)
                                     {
                                         nyul[x, y + 2] = nyul[x, y];
                                         nyul[x, y] = 0;
@@ -773,14 +774,14 @@ namespace Roka
                                 //x+1
                                 if (x <= mezox - 1)
                                 {
-                                    if (roka[x + 1, y] == 0 && fu[x + 1, y] == 3 && nyul[x + 1, y] == 0 && mozognyul < 15 || mozognyul == 15)
+                                    if (roka[x + 1, y] == 0 && fu[x + 1, y] == 3 && nyul[x + 1, y] == 0 && mozognyul <= 15)
                                     {
                                         nyul[x + 1, y] = nyul[x, y];
                                         nyul[x, y] = 0;
                                     }
                                     if (y >= 1)
                                     {
-                                        if (roka[x + 1, y - 1] == 0 && fu[x + 1, y - 1] == 3 && nyul[x + 1, y - 1] == 0 && mozognyul < 16 || mozognyul == 16)
+                                        if (roka[x + 1, y - 1] == 0 && fu[x + 1, y - 1] == 3 && nyul[x + 1, y - 1] == 0 && mozognyul <= 16)
                                         {
                                             nyul[x + 1, y - 1] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -789,7 +790,7 @@ namespace Roka
                                     }
                                     if (y >= 2)
                                     {
-                                        if (roka[x + 1, y - 2] == 0 && fu[x + 1, y - 2] == 3 && nyul[x + 1, y - 2] == 0 && mozognyul < 17 || mozognyul == 17)
+                                        if (roka[x + 1, y - 2] == 0 && fu[x + 1, y - 2] == 3 && nyul[x + 1, y - 2] == 0 && mozognyul <= 17)
                                         {
                                             nyul[x + 1, y - 2] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -797,7 +798,7 @@ namespace Roka
                                     }
                                     if (y <= mezoy - 1)
                                     {
-                                        if (roka[x + 1, y + 1] == 0 && fu[x + 1, y + 1] == 3 && nyul[x + 1, y + 1] == 0 && mozognyul < 18 || mozognyul == 18)
+                                        if (roka[x + 1, y + 1] == 0 && fu[x + 1, y + 1] == 3 && nyul[x + 1, y + 1] == 0 && mozognyul <= 18)
                                         {
                                             nyul[x + 1, y + 1] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -805,7 +806,7 @@ namespace Roka
                                     }
                                     if (y <= mezoy - 2)
                                     {
-                                        if (roka[x + 1, y + 2] == 0 && fu[x + 1, y + 2] == 3 && nyul[x + 1, y + 2] == 0 && mozognyul < 19 || mozognyul == 19)
+                                        if (roka[x + 1, y + 2] == 0 && fu[x + 1, y + 2] == 3 && nyul[x + 1, y + 2] == 0 && mozognyul <= 19)
                                         {
                                             nyul[x + 1, y + 2] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -815,14 +816,14 @@ namespace Roka
                                 //x+2
                                 if (x <= mezox - 2)
                                 {
-                                    if (roka[x + 2, y] == 0 && fu[x + 2, y] == 3 && nyul[x + 2, y] == 0 && x <= mezox - 2 && mozognyul < 20 || mozognyul == 20)
+                                    if (roka[x + 2, y] == 0 && fu[x + 2, y] == 3 && nyul[x + 2, y] == 0 && x <= mezox - 2 && mozognyul <= 20)
                                     {
                                         nyul[x + 2, y] = nyul[x, y];
                                         nyul[x, y] = 0;
                                     }
                                     if (y >= 1)
                                     {
-                                        if (roka[x + 2, y - 1] == 0 && fu[x + 2, y - 1] == 3 && nyul[x + 2, y - 1] == 0 && x <= mezox - 2 && y >= 1 && mozognyul < 21 || mozognyul == 21)
+                                        if (roka[x + 2, y - 1] == 0 && fu[x + 2, y - 1] == 3 && nyul[x + 2, y - 1] == 0 && x <= mezox - 2 && y >= 1 && mozognyul <= 21)
                                         {
                                             nyul[x + 2, y - 1] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -830,7 +831,7 @@ namespace Roka
                                     }
                                     if (y >= 2)
                                     {
-                                        if (roka[x + 2, y - 2] == 0 && fu[x + 2, y - 2] == 3 && nyul[x + 2, y - 2] == 0 && x <= mezox - 2 && y >= 2 && mozognyul < 22 || mozognyul == 22)
+                                        if (roka[x + 2, y - 2] == 0 && fu[x + 2, y - 2] == 3 && nyul[x + 2, y - 2] == 0 && x <= mezox - 2 && y >= 2 && mozognyul <= 22)
                                         {
                                             nyul[x + 2, y - 2] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -838,7 +839,7 @@ namespace Roka
                                     }
                                     if (y <= mezoy - 1)
                                     {
-                                        if (roka[x + 2, y + 1] == 0 && fu[x + 2, y + 1] == 3 && nyul[x + 2, y + 1] == 0 && x <= mezox - 2 && y <= mezoy - 1 && mozognyul < 23 || mozognyul == 23)
+                                        if (roka[x + 2, y + 1] == 0 && fu[x + 2, y + 1] == 3 && nyul[x + 2, y + 1] == 0 && x <= mezox - 2 && y <= mezoy - 1 && mozognyul <= 23)
                                         {
                                             nyul[x + 2, y + 1] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -846,7 +847,7 @@ namespace Roka
                                     }
                                     if (y <= mezoy - 2)
                                     {
-                                        if (roka[x + 2, y + 2] == 0 && fu[x + 2, y + 2] == 3 && nyul[x + 2, y + 2] == 0 && x <= mezox - 2 && y <= mezoy - 2 && mozognyul < 24 || mozognyul == 24)
+                                        if (roka[x + 2, y + 2] == 0 && fu[x + 2, y + 2] == 3 && nyul[x + 2, y + 2] == 0 && x <= mezox - 2 && y <= mezoy - 2 && mozognyul <= 24)
                                         {
                                             nyul[x + 2, y + 2] = nyul[x, y];
                                             nyul[x, y] = 0;
@@ -865,14 +866,14 @@ namespace Roka
                                     //x-1
                                     if (x >= 1)
                                     {
-                                        if (nyul[x - 1, y] != 0)
+                                        if (nyul[x - 1, y] != 0 && roka[x - 1, y] == 0)
                                         {
                                             roka[x - 1, y] = roka[x, y];
                                             roka[x, y] = 0;
                                         }
                                         if (y >= 1)
                                         {
-                                            if (nyul[x - 1, y - 1] != 0)
+                                            if (nyul[x - 1, y - 1] != 0 && roka[x - 1, y - 1] == 0)
                                             {
                                                 roka[x - 1, y - 1] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -880,7 +881,7 @@ namespace Roka
                                         }
                                         if (y >= 2)
                                         {
-                                            if (nyul[x - 1, y - 2] != 0)
+                                            if (nyul[x - 1, y - 2] != 0 && roka[x - 1, y - 2] == 0)
                                             {
                                                 roka[x - 1, y - 2] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -888,7 +889,7 @@ namespace Roka
                                         }
                                         if (y <= mezoy - 1)
                                         {
-                                            if (nyul[x - 1, y + 1] != 0)
+                                            if (nyul[x - 1, y + 1] != 0 && roka[x - 1, y + 1] == 0)
                                             {
                                                 roka[x - 1, y + 1] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -896,7 +897,7 @@ namespace Roka
                                         }
                                         if (y <= mezoy - 2)
                                         {
-                                            if (nyul[x - 1, y + 2] != 0)
+                                            if (nyul[x - 1, y + 2] != 0 && roka[x - 1, y + 2] == 0)
                                             {
                                                 roka[x - 1, y + 2] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -906,14 +907,14 @@ namespace Roka
                                     //x-2
                                     if (x >= 2)
                                     {
-                                        if (nyul[x - 2, y] != 0)
+                                        if (nyul[x - 2, y] != 0 && roka[x - 2, y] == 0)
                                         {
                                             roka[x - 2, y] = roka[x, y];
                                             roka[x, y] = 0;
                                         }
                                         if (y >= 1)
                                         {
-                                            if (nyul[x - 2, y - 1] != 0 && x >= 2 && y >= 1)
+                                            if (nyul[x - 2, y - 1] != 0 && roka[x - 2, y - 1] == 0)
                                             {
                                                 roka[x - 2, y - 1] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -921,7 +922,7 @@ namespace Roka
                                         }
                                         if (y >= 2)
                                         {
-                                            if (nyul[x - 2, y - 2] != 0 && x >= 2 && y >= 2)
+                                            if (nyul[x - 2, y - 2] != 0 && roka[x - 2, y - 2] == 0)
                                             {
                                                 roka[x - 2, y - 2] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -929,7 +930,7 @@ namespace Roka
                                         }
                                         if (y <= mezoy - 1)
                                         {
-                                            if (nyul[x - 2, y + 1] != 0 && x >= 2 && y <= mezoy - 1)
+                                            if (nyul[x - 2, y + 1] != 0 && roka[x - 2, y + 1] == 0)
                                             {
                                                 roka[x - 2, y + 1] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -937,7 +938,7 @@ namespace Roka
                                         }
                                         if (y <= mezoy - 2)
                                         {
-                                            if (nyul[x - 2, y + 2] != 0 && x >= 2 && y <= mezoy - 2)
+                                            if (nyul[x - 2, y + 2] != 0 && roka[x - 2, y + 2] == 0)
                                             {
                                                 roka[x - 2, y + 2] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -947,7 +948,7 @@ namespace Roka
                                     //x
                                     if (y >= 1)
                                     {
-                                        if (nyul[x, y - 1] != 0)
+                                        if (nyul[x, y - 1] != 0 && roka[x, y - 1] == 0)
                                         {
                                             roka[x, y - 1] = roka[x, y];
                                             roka[x, y] = 0;
@@ -955,7 +956,7 @@ namespace Roka
                                     }
                                     if (y >= 2)
                                     {
-                                        if (nyul[x, y - 2] != 0)
+                                        if (nyul[x, y - 2] != 0 && roka[x, y - 2] == 0)
                                         {
                                             roka[x, y - 2] = roka[x, y];
                                             roka[x, y] = 0;
@@ -963,7 +964,7 @@ namespace Roka
                                     }
                                     if (y <= mezoy - 1)
                                     {
-                                        if (nyul[x, y + 1] != 0)
+                                        if (nyul[x, y + 1] != 0 && roka[x, y + 1] == 0)
                                         {
                                             roka[x, y + 1] = roka[x, y];
                                             roka[x, y] = 0;
@@ -971,7 +972,7 @@ namespace Roka
                                     }
                                     if (y <= mezoy - 2)
                                     {
-                                        if (nyul[x, y + 2] != 0)
+                                        if (nyul[x, y + 2] != 0 && roka[x, y + 2] == 0)
                                         {
                                             roka[x, y + 2] = roka[x, y];
                                             roka[x, y] = 0;
@@ -980,14 +981,14 @@ namespace Roka
                                     //x+1
                                     if (x <= mezox - 1)
                                     {
-                                        if (nyul[x + 1, y] != 0)
+                                        if (nyul[x + 1, y] != 0 && roka[x + 1, y] == 0)
                                         {
                                             roka[x + 1, y] = roka[x, y];
                                             roka[x, y] = 0;
                                         }
                                         if (y >= 1)
                                         {
-                                            if (nyul[x + 1, y - 1] != 0)
+                                            if (nyul[x + 1, y - 1] != 0 && roka[x + 1, y - 1] == 0)
                                             {
                                                 roka[x + 1, y - 1] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -995,7 +996,7 @@ namespace Roka
                                         }
                                         if (y >= 2)
                                         {
-                                            if (nyul[x + 1, y - 2] != 0)
+                                            if (nyul[x + 1, y - 2] != 0 && roka[x + 1, y - 2] == 0)
                                             {
                                                 roka[x + 1, y - 2] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -1003,7 +1004,7 @@ namespace Roka
                                         }
                                         if (y <= mezoy - 1)
                                         {
-                                            if (nyul[x + 1, y + 1] != 0)
+                                            if (nyul[x + 1, y + 1] != 0 && roka[x + 1, y + 1] == 0)
                                             {
                                                 roka[x + 1, y + 1] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -1011,7 +1012,7 @@ namespace Roka
                                         }
                                         if (y <= mezoy - 2)
                                         {
-                                            if (nyul[x + 1, y + 2] != 0)
+                                            if (nyul[x + 1, y + 2] != 0 && roka[x + 1, y + 2] == 0)
                                             {
                                                 roka[x + 1, y + 2] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -1021,14 +1022,14 @@ namespace Roka
                                     //x+2
                                     if (x <= mezox - 2)
                                     {
-                                        if (nyul[x + 2, y] != 0)
+                                        if (nyul[x + 2, y] != 0 && roka[x + 2, y] == 0)
                                         {
                                             roka[x + 2, y] = roka[x, y];
                                             roka[x, y] = 0;
                                         }
                                         if (y >= 1)
                                         {
-                                            if (nyul[x + 2, y - 1] != 0)
+                                            if (nyul[x + 2, y - 1] != 0 && roka[x + 2, y - 1] == 0)
                                             {
                                                 roka[x + 2, y - 1] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -1036,7 +1037,7 @@ namespace Roka
                                         }
                                         if (y >= 2)
                                         {
-                                            if (nyul[x + 2, y - 2] != 0)
+                                            if (nyul[x + 2, y - 2] != 0 && roka[x + 2, y - 2] == 0)
                                             {
                                                 roka[x + 2, y - 2] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -1044,7 +1045,7 @@ namespace Roka
                                         }
                                         if (y <= mezoy - 1)
                                         {
-                                            if (nyul[x + 2, y + 1] != 0)
+                                            if (nyul[x + 2, y + 1] != 0 && roka[x + 2, y + 1] == 0)
                                             {
                                                 roka[x + 2, y + 1] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -1052,7 +1053,7 @@ namespace Roka
                                         }
                                         if (y <= mezoy - 2)
                                         {
-                                            if (nyul[x + 2, y + 2] != 0)
+                                            if (nyul[x + 2, y + 2] != 0 && roka[x + 2, y + 2] == 0)
                                             {
                                                 roka[x + 2, y + 2] = roka[x, y];
                                                 roka[x, y] = 0;
@@ -1060,9 +1061,10 @@ namespace Roka
                                         }
                                     }
                                 }
-                                //szaporodas                              
-                                //nyulszaporodas
-
+                                #endregion
+                                //szaporodas  
+                                #region nyulszaporodas
+                                /*
                                 if (nyul[x, y] != 0)
                                 {
                                     if (nyul[x + 1, y] != 0 && x <= mezox - 1)
@@ -1120,7 +1122,10 @@ namespace Roka
                                         }
                                     }
                                 }
-                                //rokaszaporodas
+                                */
+                                #endregion
+                                #region rokaszaporodas
+                                /*
                                 if (roka[x, y] != 0)
                                 {
                                     if (roka[x + 1, y] > 5)
@@ -1178,21 +1183,22 @@ namespace Roka
                                         }
                                     }
                                 }
-
+                                */
+                                #endregion 
                             }
-                            #endregion
+
                             #region fu noves
                             if (fu[x, y] != 3 && nyul[x, y] == 0)
                             {
                                 fu[x, y]++;
                             }
                             #endregion
-                            mezoy--;
-                            mezox--;
+                            mezoy++;
+                            mezox++;
                         }
                     }
                     #region kiiras
-                    Console.WriteLine(mozognyul);
+
                     for (int x = 0; x < mezox; x++)
                     {
                         for (int y = 0; y < mezoy; y++)
